@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <div className="main">
-        <h2 className="main-header">React Crud Operations</h2>
+        <h2 className="main-header">Game Store</h2>
         <div>
           <Route exact path='/create' component={Create} />
         </div>
