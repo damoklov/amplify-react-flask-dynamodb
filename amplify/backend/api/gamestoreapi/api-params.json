@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/game",
+      "lambdaFunction": "gamestoreapi",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/game"
+    }
+  ],
+  "resourceName": "gamestoreapi",
+  "apiName": "gamestoreapi",
+  "functionArns": [
+    {
+      "lambdaFunction": "gamestoreapi"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-gamestoreapi-dev-232516-authRole",
+    "unAuthRoleName": "amplify-gamestoreapi-dev-232516-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "gamestoreapi",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

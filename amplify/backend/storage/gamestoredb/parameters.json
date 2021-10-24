@@ -1,0 +1,5 @@
+{
+    "tableName": "gamestore",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S"
+}

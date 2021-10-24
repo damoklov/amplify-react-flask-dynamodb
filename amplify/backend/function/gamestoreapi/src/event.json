@@ -1,0 +1,1 @@
+{ "path": "/game", "httpMethod": "POST", "queryStringParameters": "", "body": "{\"name\": \"TES V: Skyrim\",\"developer\": \"Bethesda\",\"browser\": \"Edge\",\"registered\": \"May 2011\",\"started\": \"August 2017\",\"online\": \"True\"}"}

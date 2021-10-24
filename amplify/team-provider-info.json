@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-gamestoreapi-dev-232516-authRole",
+      "UnauthRoleArn": "arn:aws:iam::026658561665:role/amplify-gamestoreapi-dev-232516-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::026658561665:role/amplify-gamestoreapi-dev-232516-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-gamestoreapi-dev-232516-deployment",
+      "UnauthRoleName": "amplify-gamestoreapi-dev-232516-unauthRole",
+      "StackName": "amplify-gamestoreapi-dev-232516",
+      "StackId": "arn:aws:cloudformation:us-east-2:026658561665:stack/amplify-gamestoreapi-dev-232516/56b1ce40-343f-11ec-ad0b-0af70037cf58",
+      "AmplifyAppId": "d7ca7mpr1jpdd"
+    },
+    "categories": {
+      "function": {
+        "gamestoreapi": {
+          "deploymentBucketName": "amplify-gamestoreapi-dev-232516-deployment",
+          "s3Key": "amplify-builds/gamestoreapi-6b50582f7972596f4233-build.zip"
+        }
+      }
+    }
+  }
+}
