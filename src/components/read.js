@@ -31,7 +31,7 @@ export default function Read() {
     }
 
     const onDelete = (id) => {
-        API.del('iot', `/game/${id}`).then(r => fetchData());
+        API.del('iot', `/iot/${id}`).then(r => fetchData());
     }
 
     return (
