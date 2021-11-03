@@ -8,7 +8,7 @@ export default function Read() {
 
     const fetchData = async () => {
         try {
-          const data = await API.get('gamestoreapi', '/iot');
+          const data = await API.get('iot', '/iot');
           console.log(data)
           setAPIData(data);
         } catch (error) {
@@ -31,7 +31,7 @@ export default function Read() {
     }
 
     const onDelete = (id) => {
-        API.del('gamestoreapi', `/iot/${id}`).then(r => fetchData());
+        API.del('iot', `/game/${id}`).then(r => fetchData());
     }
 
     return (

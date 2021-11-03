@@ -11,7 +11,7 @@ export default function Create() {
     const [fps, setFps] = useState(0);
 
     const postData = () => {
-        API.post('gamestoreapi', '/iot', {
+        API.post('iot', '/iot', {
             body: {
                 timestamp: timestamp,
                 sensor_id: sensor_id,
