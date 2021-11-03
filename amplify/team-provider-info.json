@@ -19,5 +19,26 @@
         }
       }
     }
+  },
+  "iot": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-gamestoreapi-iot-14212-authRole",
+      "UnauthRoleArn": "arn:aws:iam::026658561665:role/amplify-gamestoreapi-iot-14212-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::026658561665:role/amplify-gamestoreapi-iot-14212-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-gamestoreapi-iot-14212-deployment",
+      "UnauthRoleName": "amplify-gamestoreapi-iot-14212-unauthRole",
+      "StackName": "amplify-gamestoreapi-iot-14212",
+      "StackId": "arn:aws:cloudformation:us-east-2:026658561665:stack/amplify-gamestoreapi-iot-14212/2d647a90-3aa4-11ec-9bf6-06cc368d5ba0",
+      "AmplifyAppId": "d7ca7mpr1jpdd"
+    },
+    "categories": {
+      "function": {
+        "gamestoreapi": {
+          "deploymentBucketName": "amplify-gamestoreapi-iot-14212-deployment",
+          "s3Key": "amplify-builds/gamestoreapi-37717974704255455a6d-build.zip"
+        }
+      }
+    }
   }
 }

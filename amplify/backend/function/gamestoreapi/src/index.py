@@ -11,7 +11,7 @@ client = boto3.client("dynamodb")
 TABLE = os.environ.get("STORAGE_GAMESTOREDB_NAME")
 app = Flask(__name__)
 CORS(app)
-BASE_ROUTE = "/game"
+BASE_ROUTE = "/iot"
 
 
 @app.route(BASE_ROUTE, methods=['GET'])
@@ -30,12 +30,12 @@ def create_game():
     #request_json = ast.literal_eval(request.__dict__['environ']['awsgi.event']['body'])
     client.put_item(TableName=TABLE, Item={
         'id': {'S': str(uuid4())},
-        'name': {'S': request_json.get("name")},
-        'developer': {'S': request_json.get("developer")},
-        'browser': {'S': request_json.get("browser")},
-        'registered': {'S': request_json.get("registered")},
-        'started': {'S': request_json.get("started")},
-        'online': {'BOOL': request_json.get("online")},
+        'timestamp': {'S': request_json.get("timestamp")},
+        'sensor_id': {'S': request_json.get("sensor_id")},
+        'sensor_type': {'S': request_json.get("sensor_type")},
+        'cpu_load': {'N': request_json.get("cpu_load")},
+        'gpu_load': {'N': request_json.get("gpu_load")},
+        'fps': {'N': request_json.get("fps")},
     })
     return jsonify(message="item created")
 
@@ -55,22 +55,22 @@ def update_game(game_id):
     client.update_item(
         TableName=TABLE,
         Key={'id': {'S': game_id}},
-        UpdateExpression='SET #name = :name, #developer = :developer, #browser = :browser, #registered = :registered, #started = :started, #online = :online',
+        UpdateExpression='SET #timestamp = :timestamp, #sensor_id = :sensor_id, #sensor_type = :sensor_type, #cpu_load = :cpu_load, #gpu_load = :gpu_load, #fps = :fps',
         ExpressionAttributeNames={
-            '#name': 'name',
-            '#developer': 'developer',
-            '#browser': 'browser',
-            '#registered': 'registered',
-            '#started': 'started',
-            '#online': 'online'
+            '#timestamp': 'timestamp',
+            '#sensor_id': 'sensor_id',
+            '#sensor_type': 'sensor_type',
+            '#cpu_load': 'cpu_load',
+            '#gpu_load': 'gpu_load',
+            '#fps': 'fps'
         },
         ExpressionAttributeValues={
-            ':name': {'S': request.json['name']},
-            ':developer': {'S': request.json['developer']},
-            ':browser': {'S': request.json['browser']},
-            ':registered': {'S': request.json['registered']},
-            ':started': {'S': request.json['started']},
-            ':online': {'BOOL': request.json['online']},
+            ':timestamp': {'S': request.json['timestamp']},
+            ':sensor_id': {'S': request.json['sensor_id']},
+            ':sensor_type': {'S': request.json['sensor_type']},
+            ':cpu_load': {'N': request.json['cpu_load']},
+            ':gpu_load': {'N': request.json['gpu_load']},
+            ':fps': {'N': request.json['fps']},
         }
     )
     return jsonify(message="item updated")

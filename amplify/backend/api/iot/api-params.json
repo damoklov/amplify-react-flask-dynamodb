@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/iot",
+      "lambdaFunction": "gamestoreapi",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/iot"
+    }
+  ],
+  "resourceName": "iot",
+  "apiName": "iot",
+  "functionArns": [
+    {
+      "lambdaFunction": "gamestoreapi"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-gamestoreapi-iot-14212-authRole",
+    "unAuthRoleName": "amplify-gamestoreapi-iot-14212-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "gamestoreapi",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

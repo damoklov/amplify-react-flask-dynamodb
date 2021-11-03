@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
@@ -9,14 +8,13 @@ export default function Read() {
 
     const fetchData = async () => {
         try {
-          const data = await API.get('gamestoreapi', '/game');
+          const data = await API.get('gamestoreapi', '/iot');
           console.log(data)
           setAPIData(data);
         } catch (error) {
           console.log(error);
         }
     };
-
 
 
     useEffect(() => {
@@ -33,8 +31,7 @@ export default function Read() {
     }
 
     const onDelete = (id) => {
-        API.del('gamestoreapi', `/game/${id}`)
-        fetchData();
+        API.del('gamestoreapi', `/iot/${id}`).then(r => fetchData());
     }
 
     return (
@@ -42,9 +39,12 @@ export default function Read() {
             <Table singleLine>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Game</Table.HeaderCell>
-                        <Table.HeaderCell>Developer</Table.HeaderCell>
-                        <Table.HeaderCell>Online</Table.HeaderCell>
+                        <Table.HeaderCell>Timestamp</Table.HeaderCell>
+                        <Table.HeaderCell>Sensor ID</Table.HeaderCell>
+                        <Table.HeaderCell>Sensor Type</Table.HeaderCell>
+                        <Table.HeaderCell>GPU Load</Table.HeaderCell>
+                        <Table.HeaderCell>CPU Load</Table.HeaderCell>
+                        <Table.HeaderCell>FPS</Table.HeaderCell>
                         <Table.HeaderCell>Update</Table.HeaderCell>
                         <Table.HeaderCell>Delete</Table.HeaderCell>
                     </Table.Row>
@@ -54,9 +54,12 @@ export default function Read() {
                     {APIData.map((data, key) => {
                         return (
                             <Table.Row>
-                                <Table.Cell>{data.name.S}</Table.Cell>
-                                <Table.Cell>{data.developer.S}</Table.Cell>
-                                <Table.Cell>{data.online.BOOL ? 'Checked' : 'Unchecked'}</Table.Cell>
+                                <Table.Cell>{data.timestamp.S}</Table.Cell>
+                                <Table.Cell>{data.sensor_id.S}</Table.Cell>
+                                <Table.Cell>{data.sensor_type.S}</Table.Cell>
+                                <Table.Cell>{data.cpu_load.N}</Table.Cell>
+                                <Table.Cell>{data.gpu_load.N}</Table.Cell>
+                                <Table.Cell>{data.fps.N}</Table.Cell>
                                 <Link to={{pathname: '/update', data: data.id.S}}>
                                     <Table.Cell>
                                         <Button onClick={() => setData(data.id.S)}>Update</Button>
