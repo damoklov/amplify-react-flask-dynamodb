@@ -9,6 +9,7 @@ export default function Create() {
     const [cpu_load, setCpu_load] = useState(0);
     const [gpu_load, setGpu_load] = useState(0);
     const [fps, setFps] = useState(0);
+    const [api_key, setApi_key] = useState("");
 
     const postData = () => {
         API.post('iot', '/iot', {
@@ -18,7 +19,8 @@ export default function Create() {
                 sensor_type: sensor_type,
                 cpu_load: cpu_load,
                 gpu_load: gpu_load,
-                fps: fps
+                fps: fps,
+                API_KEY: api_key
             }
         })
     }
@@ -48,6 +50,10 @@ export default function Create() {
                 <Form.Field>
                     <label>FPS</label>
                     <input placeholder='FPS' onChange={(e) => setFps(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>API Key</label>
+                    <input placeholder='Key' onChange={(e) => setApi_key(e.target.value)}/>
                 </Form.Field>
                 <Button onClick={postData} type='submit'>Submit</Button>
             </Form>
