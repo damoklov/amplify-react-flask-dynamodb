@@ -9,6 +9,7 @@ from uuid import uuid4
 
 client = boto3.client("dynamodb")
 TABLE = os.environ.get("STORAGE_GAMESTOREDB_NAME")
+API_KEY = os.environ.get("API_KEY")
 app = Flask(__name__)
 CORS(app)
 BASE_ROUTE = "/iot"
@@ -27,7 +28,8 @@ def list_games():
 @app.route(BASE_ROUTE, methods=['POST'])
 def create_game():
     request_json = request.get_json()
-    #request_json = ast.literal_eval(request.__dict__['environ']['awsgi.event']['body'])
+    if request_json.get("API_KEY") != API_KEY:
+        return jsonify(message="Wrong API key")
     client.put_item(TableName=TABLE, Item={
         'id': {'S': str(uuid4())},
         'timestamp': {'S': request_json.get("timestamp")},

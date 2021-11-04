@@ -27,6 +27,9 @@
     "storagegamestoredbStreamArn": {
       "Type": "String",
       "Default": "storagegamestoredbStreamArn"
+    },
+    "apiKey": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -90,6 +93,9 @@
             },
             "STORAGE_GAMESTOREDB_STREAMARN": {
               "Ref": "storagegamestoredbStreamArn"
+            },
+            "API_KEY": {
+              "Ref": "apiKey"
             }
           }
         },
