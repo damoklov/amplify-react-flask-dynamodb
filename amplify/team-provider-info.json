@@ -36,7 +36,8 @@
       "function": {
         "gamestoreapi": {
           "deploymentBucketName": "amplify-gamestoreapi-iot-14212-deployment",
-          "s3Key": "amplify-builds/gamestoreapi-37717974704255455a6d-build.zip"
+          "s3Key": "amplify-builds/gamestoreapi-496e77794f6b732b7278-build.zip",
+          "apiKey": "zn5KkMxs3P0G0wkTwyXrDtbYwSG5KniBopG1bFcl4nb46IvjpJfszK5ksKYOrrxVchThRgbpWl53lJnj8bO2hA"
         }
       }
     }
