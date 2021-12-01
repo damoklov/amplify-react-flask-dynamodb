@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { API } from 'aws-amplify';
+import axios from "axios";
 
 export default function Read() {
     const [APIData, setAPIData] = useState([]);
 
     const fetchData = async () => {
         try {
-          const data = await API.get('iot', '/iot');
-          console.log(data)
-          setAPIData(data);
+            axios.get('http://backend:5000/iot').then(res => {
+                const data = res.data;
+                setAPIData(data);
+            })
         } catch (error) {
           console.log(error);
         }
@@ -31,7 +32,7 @@ export default function Read() {
     }
 
     const onDelete = (id) => {
-        API.del('iot', `/iot/${id}`).then(r => fetchData());
+        axios.delete(`http://backend:5000/iot/${id}`).then(r => fetchData());
     }
 
     return (

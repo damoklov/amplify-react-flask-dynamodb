@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'semantic-ui-react'
-import { API } from 'aws-amplify';
+import axios from "axios";
 
 export default function Create() {
     const [timestamp, setTimestamp] = useState('');
@@ -12,18 +12,18 @@ export default function Create() {
     const [api_key, setApi_key] = useState("");
 
     const postData = () => {
-        API.post('iot', '/iot', {
-            body: {
-                timestamp: timestamp,
-                sensor_id: sensor_id,
-                sensor_type: sensor_type,
-                cpu_load: cpu_load,
-                gpu_load: gpu_load,
-                fps: fps,
-                API_KEY: api_key
-            }
-        })
+        const body = {
+            timestamp: timestamp,
+            sensor_id: sensor_id,
+            sensor_type: sensor_type,
+            cpu_load: cpu_load,
+            gpu_load: gpu_load,
+            fps: fps,
+            API_KEY: api_key
+        };
+        axios.post(`http://backend:5000/iot`, {body})
     }
+
     return (
         <div>
             <Form className="create-form">
