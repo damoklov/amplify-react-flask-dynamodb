@@ -7,7 +7,7 @@ from flask_cors import CORS
 from flask import Flask, jsonify, request
 from uuid import uuid4
 
-client = boto3.client("dynamodb")
+client = boto3.client("dynamodb", region_name='us-east-2')
 TABLE = os.environ.get("STORAGE_GAMESTOREDB_NAME")
 API_KEY = os.environ.get("API_KEY")
 app = Flask(__name__)
@@ -89,3 +89,7 @@ def delete_game(game_id):
 
 def handler(event, context):
     return awsgi.response(app, event, context)
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
