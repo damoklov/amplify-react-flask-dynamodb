@@ -21,7 +21,7 @@ export default function Create() {
             fps: fps,
             API_KEY: api_key
         };
-        axios.post(`http://backend:5000/iot`, {body})
+        axios.post(`http://localhost:80/api/`, {body})
     }
 
     return (

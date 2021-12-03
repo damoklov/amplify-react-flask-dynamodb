@@ -28,7 +28,7 @@ export default function Update() {
             fps: fps,
             API_KEY: api_key
         };
-        axios.put(`http://backend:5000/iot/${id}`, {body})
+        axios.put(`http://localhost:80/api/${id}`, {body})
     }
 
 return (
