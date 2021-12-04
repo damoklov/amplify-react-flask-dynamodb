@@ -21,7 +21,7 @@ export default function Create() {
             fps: fps,
             API_KEY: api_key
         };
-        axios.post(`http://localhost:80/api/`, {body})
+        axios.post(`http://visiti.travel:80/api/`, {body})
     }
 
     return (

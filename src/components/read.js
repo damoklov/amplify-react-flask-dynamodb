@@ -8,7 +8,7 @@ export default function Read() {
 
     const fetchData = async () => {
         try {
-            axios.get('http://localhost:80/api/').then(res => {
+            axios.get(`http://visiti.travel:80/api/`).then(res => {
                 const data = res.data;
                 setAPIData(data);
             })
@@ -32,7 +32,7 @@ export default function Read() {
     }
 
     const onDelete = (id) => {
-        axios.delete(`http://localhost:80/api/${id}`).then(r => fetchData());
+        axios.delete(`http://visiti.travel:80/api/${id}`).then(r => fetchData());
     }
 
     return (
