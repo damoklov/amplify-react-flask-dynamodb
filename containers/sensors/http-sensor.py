@@ -9,7 +9,7 @@ url = 'http://www.visiti.travel/api/'
 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 API_KEY = os.environ.get("API_KEY")
 
-while True:
+for _ in range(100):
     data = {"timestamp": str(time.time()), "sensor_id": "1",
              "sensor_type": "PC-1", "cpu_load": str(randint(0, 100)),
              "gpu_load": str(str(randint(0, 100))),
@@ -18,4 +18,4 @@ while True:
     x = requests.post(url, data=json.dumps(data), headers=headers)
     print("SENT:", data)
     print(x.text)
-    time.sleep(5)
+    time.sleep(0.1)
