@@ -1,0 +1,23 @@
+version: '3'
+services:
+  sensor01:
+    hostname: sensor01
+    image: damoklov/sensor
+    environment:
+      - API_KEY=$API_KEY
+    build:
+      dockerfile: ./Dockerfile
+  sensor02:
+    hostname: sensor02
+    image: damoklov/sensor
+    environment:
+      - API_KEY=$API_KEY
+    build:
+      dockerfile: ./Dockerfile
+  sensor03:
+    hostname: sensor03
+    image: damoklov/sensor
+    environment:
+      - API_KEY=$API_KEY
+    build:
+      dockerfile: ./Dockerfile
