@@ -9,7 +9,7 @@ url = 'http://www.visiti.travel/api/'
 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 API_KEY = os.environ.get("API_KEY")
 
-for _ in range(100):
+for _ in range(300):
     data = {"timestamp": str(time.time()), "sensor_id": "1",
              "sensor_type": "PC-1", "cpu_load": str(randint(0, 100)),
              "gpu_load": str(str(randint(0, 100))),
@@ -19,3 +19,6 @@ for _ in range(100):
     print("SENT:", data)
     print(x.text)
     time.sleep(0.1)
+
+while True:
+    time.sleep(1)
