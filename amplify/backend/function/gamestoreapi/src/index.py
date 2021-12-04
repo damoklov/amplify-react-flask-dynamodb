@@ -3,7 +3,7 @@ import json
 import boto3
 import os
 import ast
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 from flask import Flask, jsonify, request
 from uuid import uuid4
 
@@ -13,12 +13,11 @@ AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 API_KEY = os.environ.get("API_KEY")
 client = boto3.client("dynamodb", region_name='us-east-2', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 app = Flask(__name__)
-CORS(app, origins="*")
+CORS(app)
 BASE_ROUTE = "/iot"
 
 
 @app.route(BASE_ROUTE, methods=['GET'])
-@cross_origin()
 def list_games():
     response = client.scan(TableName=TABLE)
     data = response['Items']
@@ -29,7 +28,6 @@ def list_games():
 
 
 @app.route(BASE_ROUTE, methods=['POST'])
-@cross_origin()
 def create_game():
     request_json = request.get_json()
     if request_json.get("API_KEY") != API_KEY:
@@ -47,7 +45,6 @@ def create_game():
 
 
 @app.route(BASE_ROUTE + '/<game_id>', methods=['GET'])
-@cross_origin()
 def get_game(game_id):
     item = client.get_item(TableName=TABLE, Key={
         'id': {
@@ -58,7 +55,6 @@ def get_game(game_id):
 
 
 @app.route(BASE_ROUTE + '/<game_id>', methods=['PUT'])
-@cross_origin()
 def update_game(game_id):
     client.update_item(
         TableName=TABLE,
@@ -85,7 +81,6 @@ def update_game(game_id):
 
 
 @app.route(BASE_ROUTE + '/<game_id>', methods=['DELETE'])
-@cross_origin()
 def delete_game(game_id):
     client.delete_item(
         TableName=TABLE,
