@@ -11,6 +11,10 @@ services:
       - STORAGE_GAMESTOREDB_NAME=gamestore-iot
     build:
       dockerfile: ./backend/Dockerfile
+    deploy:
+      x-aws-autoscaling: 
+        cpu: 10
+        max: 2
     ports:
       - 5000:5000
   frontend:
